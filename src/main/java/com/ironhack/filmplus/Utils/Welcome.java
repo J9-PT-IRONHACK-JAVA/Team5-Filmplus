@@ -1,9 +1,7 @@
 package com.ironhack.filmplus.Utils;
 
-import com.ironhack.filmplus.Controller.FilmController;
 import com.ironhack.filmplus.Controller.FilmProxy;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -47,28 +45,46 @@ public class Welcome {
 
     public  void loadMenu() {
 
+        var apiKey = "84875c710c9f3dd1f9968ca8436ba001";
+        var sortBy = "popularity.desc";
+
+
         var scanner = new Scanner(System.in);
+
 
         System.out.println("What do you want to do?\n\n");
         System.out.println("1. Check more popular films");
-        System.out.println("2. Check more popular films from last year");
-        System.out.println("1. List 2");
-        System.out.println("3. Logout"); //OK
+        System.out.println("2. Check more popular drama films");
+        System.out.println("3. Check more popular drama films");
+        System.out.println("4. Logout"); //OK
+
 
         var inputMenu = scanner.nextLine();
         int integerMenu = Integer.parseInt(inputMenu);
         if (integerMenu==1){
-//            System.out.println("Press any key to continue");
-//            String inputMenuFilm = scanner.nextLine();
-            var popularFilms = filmProxy.getFilmsByPopularity();
-            System.out.println(popularFilms);
-            //  localRedirect();
-            // getFilmByPopularity();
-            //getMovieInfo(in)
+            var popularFilms = filmProxy.getFilmsByPopularity(apiKey,sortBy);
+            for (int i = 0; i < 10; i++) {
+                var film = popularFilms.getResults().get(i);
+                System.out.println("Film name: " + film.getTitle());
+                System.out.println("Original language: " +film.getOriginal_language());
+                System.out.println("Overview: "+ film.getOverview());
+            }
         } else if (integerMenu==2){
-            var bestOfYear = filmProxy.mostPopularOfLastYear();
-            System.out.println(bestOfYear);
+            var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,16);
+            for (int i = 0; i < 10; i++) {
+                var film = popularFilmByGenre.getResults().get(i);
+                System.out.println("Genre: "+ film.getGenre());
+                System.out.println("Film title: "+film.getTitle());
+                System.out.println("Rank: "+film.getVoteAverage());
+            }
         } else if (integerMenu==3){
+            var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,16);
+            for (int i = 0; i < 10; i++) {
+                var film = popularFilmByGenre.getResults().get(i);
+                System.out.println("Genre: "+ film.getGenre());
+                System.out.println("Film title: "+film.getTitle());
+                System.out.println("Rank: "+film.getVoteAverage());
+            }
             System.exit(1);
         } else {
             System.out.println("");
