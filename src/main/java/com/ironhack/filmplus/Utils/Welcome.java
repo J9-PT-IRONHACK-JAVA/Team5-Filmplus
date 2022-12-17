@@ -19,8 +19,8 @@ public class Welcome {
         var users = new HashMap<String, String>();
         var scanner = new Scanner(System.in);
 
-        users.put("user", "pepe");
-        users.put("admin", "dri");
+        users.put("dri", "12345");
+        users.put("eli", "12345");
 
         int tryNumber = 2;
         var inputName = scanner.nextLine();
