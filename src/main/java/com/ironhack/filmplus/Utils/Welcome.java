@@ -62,22 +62,46 @@ public class Welcome {
                 System.out.println("Film name: " + film.getTitle());
                 System.out.println("Original language: " +film.getOriginal_language());
                 System.out.println("Overview: "+ film.getOverview());
+                System.out.println("=================================");
             }
+            System.out.println("Press any key to continue...");
+            var inputMenu2 = scanner.nextLine();
+            int integerMenu2 = Integer.parseInt(inputMenu);
+            loadMenu();
         } else if (integerMenu==2){
             var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,16);
             printInfoFilm(popularFilmByGenre);
+            var inputMenu2 = scanner.nextLine();
+            int integerMenu2 = Integer.parseInt(inputMenu);
+            loadMenu();
         } else if (integerMenu==3){
             var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,28);
             printInfoFilm(popularFilmByGenre);
+
+            var inputMenu2 = scanner.nextLine();
+            int integerMenu2 = Integer.parseInt(inputMenu);
+            loadMenu();
         } else if (integerMenu==4){
             var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,35);
             printInfoFilm(popularFilmByGenre);
+
+            var inputMenu2 = scanner.nextLine();
+            int integerMenu2 = Integer.parseInt(inputMenu);
+            loadMenu();
          } else if (integerMenu==5){
             var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,27);
             printInfoFilm(popularFilmByGenre);
+
+            var inputMenu2 = scanner.nextLine();
+            int integerMenu2 = Integer.parseInt(inputMenu);
+            loadMenu();
         } else if (integerMenu==6){
             var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,18);
             printInfoFilm(popularFilmByGenre);
+
+            var inputMenu2 = scanner.nextLine();
+            int integerMenu2 = Integer.parseInt(inputMenu);
+            loadMenu();
         } else if  (integerMenu==7){
             System.out.println("Closing program...");
             System.exit(1);
@@ -93,6 +117,7 @@ public class Welcome {
             System.out.println("Rank: "+film.getVote_average());
             System.out.println("=================================");
         }
+        System.out.println("Press any key to continue...");
     }
 
     public void menuOptions(){
