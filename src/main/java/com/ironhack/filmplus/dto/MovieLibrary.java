@@ -1,10 +1,13 @@
 package com.ironhack.filmplus.dto;
 
+import java.util.ArrayList;
+
 public class MovieLibrary {
 
     private String id;
     private String title;
     private String overview;
+    private ArrayList moviesCollection;
 
     public String getId() {
         return id;

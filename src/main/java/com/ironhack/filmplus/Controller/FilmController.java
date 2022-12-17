@@ -1,65 +1,81 @@
 package com.ironhack.filmplus.Controller;
 
-import com.ironhack.filmplus.dto.Film;
-import com.ironhack.filmplus.dto.MovieLibrary;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+
+import com.ironhack.filmplus.dto.FilmResults;
+import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Scanner;
 
-import static jdk.javadoc.internal.doclets.formats.html.markup.HtmlStyle.returnType;
-import static jdk.javadoc.internal.doclets.formats.html.markup.HtmlStyle.title;
 
 @RestController
 @RequestMapping("/movies")
+@RequiredArgsConstructor
 public class FilmController{
-    public static void loadMenu() {
 
-    var scanner = new Scanner(System.in);
+    // @Autowired
+    private final FilmProxy filmProxy;
 
-        System.out.println("What do you want to do?\n\n");
-        System.out.println("1. Check Overview");
-        System.out.println("2. Check most popular films of 2022");
-        System.out.println("1. List 2");
-        System.out.println("3. Logout");
+    //@Bean  para poder hacer inyecciones de dependencias
 
-    var inputMenu = scanner.nextLine();
-    int integerMenu = Integer.parseInt(inputMenu);
-        if (integerMenu==1){
-        System.out.println("Which movie do you want to check?");
-        String inputMenuFilm = scanner.nextLine();
-        //getMovieInfo(in)
-    } else if (integerMenu==2){
-      //  bestOfYear();
-    } else if (integerMenu==3){
-        System.exit(1);
-    } else {
-        System.out.println("");
-    }
 
-        scanner.close();
-}
-
-    @Value("${84875c710c9f3dd1f9968ca8436ba001}")
-    private String apiKey;
+//    @Value("${84875c710c9f3dd1f9968ca8436ba001}")
+////    private static String apiKey;
+//    private  String apiKey;
 
  //   @Autowired
-    public RestTemplate restTemplate;
+    public  RestTemplate restTemplate;
+   // public static RestTemplate restTemplate;
 
 
-    @RequestMapping("/{movieName}")
-    public Film getMovieInfo(@PathVariable("movieName") String movieName) {
-        MovieLibrary movieLibrary = restTemplate.getForObject("https://api.themoviedb.org/3/movie/" + title + "?api_key=" +  apiKey, MovieLibrary.class);
-        return new Film(movieName, movieLibrary.getTitle(), movieLibrary.getOverview());
-
-    }
+//    @RequestMapping("/{movieName}")
+//    public Film getMovieInfo(@PathVariable("movieName") String movieName) {
+//        MovieLibrary movieLibrary = restTemplate.getForObject("https://api.themoviedb.org/3/movie/" + title + "?api_key=" +  apiKey, MovieLibrary.class);
+//       // return new Film(movieName, movieLibrary.getTitle(), movieLibrary.getOverview());
+//
+//    }
 
     @FeignClient(name = "bestOf", url = "https://api.themoviedb.org/discover/movie?sort_by=popularity.desc")
     public interface bestOfYear {
         @GetMapping("{rank}")
-        Film rankFilms(@PathVariable String city);
+        FilmResults rankFilms(@PathVariable String city);
     }
+
+    @GetMapping("/popular")
+    public FilmResults getFilms(){
+        return filmProxy.getFilmsByPopularity();
+    }
+
+   // @GetMapping("/discover/movie?sort_by=popularity.desc")
+  //  public static String getFilmByPopularity(){
+//        String url = "http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc";
+//        MovieLibrary movieLibrary = restTemplate.getForObject("https://api.themoviedb.org/3/movie/100?api_key=84875c710c9f3dd1f9968ca8436ba001", MovieLibrary.class);
+//        return movieLibrary.toString();
+//    }
+
+//        @RequestMapping(value = "/redirect", method = RequestMethod.GET)
+//        public void method(HttpServletResponse httpServletResponse) {
+//            httpServletResponse.setHeader("Location", projectUrl);
+//            httpServletResponse.setStatus(302);
+//        }
+
+//        @RequestMapping(value = "/movie?sort_by=popularity.desc", method = RequestMethod.GET)
+//        public String method() {
+//            return new String("/movie?sort_by=popularity.desc" + "http://api.themoviedb.org/3/discover");
+//        }
+
+//    @RequestMapping("")
+//    public static RedirectView localRedirect() {
+//        RedirectView redirectView = new RedirectView();
+//        redirectView.setUrl("http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc");
+//        System.out.println(redirectView.toString());
+//        return redirectView;
+//    }
+
+
+
+
+
+
 }

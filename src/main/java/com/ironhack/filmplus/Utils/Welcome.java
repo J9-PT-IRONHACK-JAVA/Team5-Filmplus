@@ -1,12 +1,20 @@
 package com.ironhack.filmplus.Utils;
 
 import com.ironhack.filmplus.Controller.FilmController;
+import com.ironhack.filmplus.Controller.FilmProxy;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Scanner;
-
+@Component
+@RequiredArgsConstructor
 public class Welcome {
-    public static void login() {
+
+    private final FilmProxy filmProxy;
+
+    public void login() {
         System.out.println("\n\nTo access, first insert your credentials \n \n");
         System.out.println("What's your name?");
 
@@ -24,7 +32,7 @@ public class Welcome {
         if (users.containsKey(inputName) && users.get(inputName).equals(inputPass)) {
             System.out.println("You can enter! Welcome " + inputName);
             com.ironhack.filmplus.Utils.Banners.cleanScreen();
-            FilmController.loadMenu();
+            loadMenu();
         } else if (!users.containsValue(inputName) || !users.containsKey(inputName) || !users.get(inputName).equals(inputPass)) {
             do {
                 tryNumber = tryNumber - 1;
@@ -35,5 +43,36 @@ public class Welcome {
             System.exit(0);
             scanner.close();
         }
+    }
+
+    public  void loadMenu() {
+
+        var scanner = new Scanner(System.in);
+
+        System.out.println("What do you want to do?\n\n");
+        System.out.println("1. Check more popular films");
+        System.out.println("2. List");
+        System.out.println("1. List 2");
+        System.out.println("3. Logout"); //OK
+
+        var inputMenu = scanner.nextLine();
+        int integerMenu = Integer.parseInt(inputMenu);
+        if (integerMenu==1){
+            System.out.println("Press any key to continue");
+            String inputMenuFilm = scanner.nextLine();
+            var popularFilms = filmProxy.getFilmsByPopularity();
+            System.out.println(popularFilms);
+            //  localRedirect();
+            // getFilmByPopularity();
+            //getMovieInfo(in)
+        } else if (integerMenu==2){
+            //  bestOfYear();
+        } else if (integerMenu==3){
+            System.exit(1);
+        } else {
+            System.out.println("");
+        }
+
+        scanner.close();
     }
 }
