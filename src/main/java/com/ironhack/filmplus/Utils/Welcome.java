@@ -54,9 +54,12 @@ public class Welcome {
 
         System.out.println("What do you want to do?\n\n");
         System.out.println("1. Check more popular films");
-        System.out.println("2. Check more popular drama films");
-        System.out.println("3. Check more popular drama films");
-        System.out.println("4. Logout"); //OK
+        System.out.println("2. Check more popular animation films");
+        System.out.println("3. Check more popular action films");
+        System.out.println("4. Check more popular comedy films");
+        System.out.println("5. Check more popular horror films");
+        System.out.println("6. Check more popular drama films");
+        System.out.println("5. Logout"); //OK
 
 
         var inputMenu = scanner.nextLine();
@@ -78,7 +81,31 @@ public class Welcome {
                 System.out.println("Rank: "+film.getVoteAverage());
             }
         } else if (integerMenu==3){
-            var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,16);
+            var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,28);
+            for (int i = 0; i < 10; i++) {
+                var film = popularFilmByGenre.getResults().get(i);
+                System.out.println("Genre: "+ film.getGenre());
+                System.out.println("Film title: "+film.getTitle());
+                System.out.println("Rank: "+film.getVoteAverage());
+            }
+        } else if (integerMenu==4){
+            var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,35);
+            for (int i = 0; i < 10; i++) {
+                var film = popularFilmByGenre.getResults().get(i);
+                System.out.println("Genre: "+ film.getGenre());
+                System.out.println("Film title: "+film.getTitle());
+                System.out.println("Rank: "+film.getVoteAverage());
+            }
+        } else if (integerMenu==5){
+            var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,27);
+            for (int i = 0; i < 10; i++) {
+                var film = popularFilmByGenre.getResults().get(i);
+                System.out.println("Genre: " + film.getGenre());
+                System.out.println("Film title: " + film.getTitle());
+                System.out.println("Rank: " + film.getVoteAverage());
+            }
+        } else if (integerMenu==4){
+            var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,18);
             for (int i = 0; i < 10; i++) {
                 var film = popularFilmByGenre.getResults().get(i);
                 System.out.println("Genre: "+ film.getGenre());
