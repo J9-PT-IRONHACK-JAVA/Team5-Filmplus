@@ -10,7 +10,7 @@ public class Film {
     private String original_language;
     private String title;
 
-    private double voteAverage;
+    private double vote_average;
     private String country;
     private String genre;
 

@@ -59,7 +59,7 @@ public class Welcome {
         System.out.println("4. Check more popular comedy films");
         System.out.println("5. Check more popular horror films");
         System.out.println("6. Check more popular drama films");
-        System.out.println("5. Logout"); //OK
+        System.out.println("7. Logout"); //OK
 
 
         var inputMenu = scanner.nextLine();
@@ -71,50 +71,52 @@ public class Welcome {
                 System.out.println("Film name: " + film.getTitle());
                 System.out.println("Original language: " +film.getOriginal_language());
                 System.out.println("Overview: "+ film.getOverview());
+                System.out.println("=================================");
             }
         } else if (integerMenu==2){
             var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,16);
             for (int i = 0; i < 10; i++) {
                 var film = popularFilmByGenre.getResults().get(i);
-                System.out.println("Genre: "+ film.getGenre());
                 System.out.println("Film title: "+film.getTitle());
-                System.out.println("Rank: "+film.getVoteAverage());
+                System.out.println("Rank: "+film.getVote_average());
+                System.out.println("=================================");
             }
         } else if (integerMenu==3){
             var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,28);
             for (int i = 0; i < 10; i++) {
                 var film = popularFilmByGenre.getResults().get(i);
-                System.out.println("Genre: "+ film.getGenre());
                 System.out.println("Film title: "+film.getTitle());
-                System.out.println("Rank: "+film.getVoteAverage());
+                System.out.println("Rank: "+film.getVote_average());
+                System.out.println("=================================");
             }
         } else if (integerMenu==4){
             var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,35);
             for (int i = 0; i < 10; i++) {
                 var film = popularFilmByGenre.getResults().get(i);
-                System.out.println("Genre: "+ film.getGenre());
                 System.out.println("Film title: "+film.getTitle());
-                System.out.println("Rank: "+film.getVoteAverage());
+                System.out.println("Rank: "+film.getVote_average());
+                System.out.println("=================================");
             }
         } else if (integerMenu==5){
             var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,27);
             for (int i = 0; i < 10; i++) {
                 var film = popularFilmByGenre.getResults().get(i);
-                System.out.println("Genre: " + film.getGenre());
                 System.out.println("Film title: " + film.getTitle());
-                System.out.println("Rank: " + film.getVoteAverage());
+                System.out.println("Rank: " + film.getVote_average());
+                System.out.println("=================================");
             }
-        } else if (integerMenu==4){
+        } else if (integerMenu==6){
             var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,18);
             for (int i = 0; i < 10; i++) {
                 var film = popularFilmByGenre.getResults().get(i);
                 System.out.println("Genre: "+ film.getGenre());
                 System.out.println("Film title: "+film.getTitle());
-                System.out.println("Rank: "+film.getVoteAverage());
+                System.out.println("=================================");
             }
             System.exit(1);
-        } else {
-            System.out.println("");
+        } else if  (integerMenu==7){
+            System.out.println("Closing program...");
+            System.exit(1);
         }
 
         scanner.close();
