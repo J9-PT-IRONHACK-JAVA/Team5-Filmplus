@@ -36,11 +36,11 @@ public class FilmController{
 //
 //    }
 
-    @FeignClient(name = "bestOf", url = "https://api.themoviedb.org/discover/movie?sort_by=popularity.desc")
-    public interface bestOfYear {
-        @GetMapping("{rank}")
-        FilmResults rankFilms(@PathVariable String city);
-    }
+//    @FeignClient(name = "bestOf", url = "https://api.themoviedb.org/discover/movie?sort_by=popularity.desc")
+//    public interface bestOfYear {
+//        @GetMapping("{rank}")
+//        FilmResults rankFilms(@PathVariable String city);
+//    }
 
     @GetMapping("/popular")
     public FilmResults getFilms(){
@@ -72,10 +72,5 @@ public class FilmController{
 //        System.out.println(redirectView.toString());
 //        return redirectView;
 //    }
-
-
-
-
-
 
 }

@@ -5,32 +5,20 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-    public class FilmResults{
-        private List<Film> results;
+public class FilmResults{
+    private List<Film> results;
+}
 
-//        public FilmResults(List<Film> results) {
-//            this.results = results;
-//        }
-//
-//        public List<Film> getResults() {
-//            return results;
-//        }
-//
-//        public void setResults(List<Film> results) {
-//            this.results = results;
-//        }
-//
+@Data
+class Film {
 
-
-
-    }
-
-    @Data
- class Film {
-   // private int id;
     private String original_title;
-   // private String title;
-    // private String overview;
+    private String overview;
+    private String original_language;
+    private String title;
+
+    private double rank;
+    private String country;
 
 //    public Film(int id, String original_title, String overview) {
 //        this.id = id;
@@ -61,6 +49,15 @@ import java.util.List;
 //    public void setOverview(String overview) {
 //        this.overview = overview;
 //    }
+    @Override
+    public String toString() {
+        return "Film:\n"
+            + " Film title: " + title + "\n"
+            + " Original title: " + original_title + "\n"
+            + " Original language: " + original_language + "\n"
+            + " Overview: " + overview + "\n"
+            + "======================" + "\n";
+    }
 
 }
 
