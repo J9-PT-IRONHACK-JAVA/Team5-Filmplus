@@ -52,16 +52,7 @@ public class Welcome {
 
         var scanner = new Scanner(System.in);
 
-
-        System.out.println("What do you want to do?\n\n");
-        System.out.println("1. Check more popular films");
-        System.out.println("2. Check more popular animation films");
-        System.out.println("3. Check more popular action films");
-        System.out.println("4. Check more popular comedy films");
-        System.out.println("5. Check more popular horror films");
-        System.out.println("6. Check more popular drama films");
-        System.out.println("7. Logout"); //OK
-
+        menuOptions();
 
         var inputMenu = scanner.nextLine();
         int integerMenu = Integer.parseInt(inputMenu);
@@ -74,22 +65,27 @@ public class Welcome {
                 System.out.println("Overview: "+ film.getOverview());
                 System.out.println("=================================");
             }
+            menuOptions();
         } else if (integerMenu==2){
             var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,16);
             printInfoFilm(popularFilmByGenre);
+            menuOptions();
         } else if (integerMenu==3){
             var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,28);
             printInfoFilm(popularFilmByGenre);
+            menuOptions();
         } else if (integerMenu==4){
             var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,35);
             printInfoFilm(popularFilmByGenre);
+            menuOptions();
         } else if (integerMenu==5){
             var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,27);
             printInfoFilm(popularFilmByGenre);
+            menuOptions();
         } else if (integerMenu==6){
             var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,18);
             printInfoFilm(popularFilmByGenre);
-            System.exit(1);
+            menuOptions();
         } else if  (integerMenu==7){
             System.out.println("Closing program...");
             System.exit(1);
@@ -105,5 +101,16 @@ public class Welcome {
             System.out.println("Rank: "+film.getVote_average());
             System.out.println("=================================");
         }
+    }
+
+    public void menuOptions(){
+        System.out.println("What do you want to do?\n\n");
+        System.out.println("1. Check more popular films");
+        System.out.println("2. Check more popular animation films");
+        System.out.println("3. Check more popular action films");
+        System.out.println("4. Check more popular comedy films");
+        System.out.println("5. Check more popular horror films");
+        System.out.println("6. Check more popular drama films");
+        System.out.println("7. Logout"); //OK
     }
 }
