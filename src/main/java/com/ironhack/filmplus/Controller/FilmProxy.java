@@ -12,12 +12,5 @@ public interface FilmProxy {
 
     @GetMapping("discover/movie?api_key=84875c710c9f3dd1f9968ca8436ba001&sort_by=popularity.desc")
     FilmResults getFilmsByPopularity();
-  //  List<Film> getFilmsByPopularity();
-
-
-
-
-
-
 
 }

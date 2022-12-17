@@ -51,23 +51,18 @@ public class Welcome {
 
         System.out.println("What do you want to do?\n\n");
         System.out.println("1. Check more popular films");
-        System.out.println("2. Check more popular films from last year");
+        System.out.println("2. Check best dramas");
         System.out.println("1. List 2");
-        System.out.println("3. Logout"); //OK
+        System.out.println("3. Logout");
 
         var inputMenu = scanner.nextLine();
         int integerMenu = Integer.parseInt(inputMenu);
         if (integerMenu==1){
-//            System.out.println("Press any key to continue");
-//            String inputMenuFilm = scanner.nextLine();
+
             var popularFilms = filmProxy.getFilmsByPopularity();
             System.out.println(popularFilms);
-            //  localRedirect();
-            // getFilmByPopularity();
-            //getMovieInfo(in)
+
         } else if (integerMenu==2){
-            var bestOfYear = filmProxy.mostPopularOfLastYear();
-            System.out.println(bestOfYear);
         } else if (integerMenu==3){
             System.exit(1);
         } else {

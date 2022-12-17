@@ -14,5 +14,3 @@ public class MyFeignConfig {
         return new HttpMessageConverters(additional);
     }
 }
-
-// MyFeignConfig: mapea la respuesta

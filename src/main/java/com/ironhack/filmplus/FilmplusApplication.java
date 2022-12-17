@@ -32,15 +32,3 @@ public class FilmplusApplication implements CommandLineRunner {
         welcome.login();
     }
 }
-
-//    public static void main(String[] args) {
-//        SpringApplication.run(FilmplusApplication.class, args);
-//        Welcome.login();
-//    }
-//    @LoadBalanced
-//
-//    }
-
-
-
-
