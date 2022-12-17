@@ -1,6 +1,7 @@
 package com.ironhack.filmplus.Utils;
 
 import com.ironhack.filmplus.Controller.FilmProxy;
+import com.ironhack.filmplus.dto.FilmResults;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -75,44 +76,19 @@ public class Welcome {
             }
         } else if (integerMenu==2){
             var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,16);
-            for (int i = 0; i < 10; i++) {
-                var film = popularFilmByGenre.getResults().get(i);
-                System.out.println("Film title: "+film.getTitle());
-                System.out.println("Rank: "+film.getVote_average());
-                System.out.println("=================================");
-            }
+            printInfoFilm(popularFilmByGenre);
         } else if (integerMenu==3){
             var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,28);
-            for (int i = 0; i < 10; i++) {
-                var film = popularFilmByGenre.getResults().get(i);
-                System.out.println("Film title: "+film.getTitle());
-                System.out.println("Rank: "+film.getVote_average());
-                System.out.println("=================================");
-            }
+            printInfoFilm(popularFilmByGenre);
         } else if (integerMenu==4){
             var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,35);
-            for (int i = 0; i < 10; i++) {
-                var film = popularFilmByGenre.getResults().get(i);
-                System.out.println("Film title: "+film.getTitle());
-                System.out.println("Rank: "+film.getVote_average());
-                System.out.println("=================================");
-            }
+            printInfoFilm(popularFilmByGenre);
         } else if (integerMenu==5){
             var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,27);
-            for (int i = 0; i < 10; i++) {
-                var film = popularFilmByGenre.getResults().get(i);
-                System.out.println("Film title: " + film.getTitle());
-                System.out.println("Rank: " + film.getVote_average());
-                System.out.println("=================================");
-            }
+            printInfoFilm(popularFilmByGenre);
         } else if (integerMenu==6){
             var popularFilmByGenre = filmProxy.getPopularFilmsByGenre(apiKey,sortBy,18);
-            for (int i = 0; i < 10; i++) {
-                var film = popularFilmByGenre.getResults().get(i);
-                System.out.println("Genre: "+ film.getGenre());
-                System.out.println("Film title: "+film.getTitle());
-                System.out.println("=================================");
-            }
+            printInfoFilm(popularFilmByGenre);
             System.exit(1);
         } else if  (integerMenu==7){
             System.out.println("Closing program...");
@@ -120,5 +96,14 @@ public class Welcome {
         }
 
         scanner.close();
+    }
+
+    private void printInfoFilm(FilmResults popularFilmByGenre) {
+        for (int i = 0; i < 10; i++) {
+            var film = popularFilmByGenre.getResults().get(i);
+            System.out.println("Film title: "+film.getTitle());
+            System.out.println("Rank: "+film.getVote_average());
+            System.out.println("=================================");
+        }
     }
 }
